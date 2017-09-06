@@ -5,7 +5,6 @@ Created on Sun Aug 27 13:46:15 2017
 @author: david
 """
 
-# from: https://machinelearningmastery.com/time-series-forecasting-long-short-term-memory-network-python/
 # load and plot dataset
 from keras.layers import Dense
 from keras.layers import LSTM
