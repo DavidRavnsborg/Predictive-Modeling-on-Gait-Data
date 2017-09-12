@@ -20,6 +20,7 @@ from pandas import to_timedelta
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 from time import time
+import numpy
 
 # create a differenced series
 def difference(dataset, interval=1):
@@ -121,9 +122,9 @@ def experiment(repeats, series, epochs, batch_size, neurons):
         print('%d) Test RMSE: %.3f' % (r+1, rmse))
         error_scores.append(rmse)
         # line plot of observed vs predicted
-#        pyplot.plot(raw_values[split_point:end_point]) 
-#        pyplot.plot(predictions) 
-#        pyplot.show()
+        pyplot.plot(raw_values[split_point:end_point]) 
+        pyplot.plot(predictions) 
+        pyplot.show()
     return error_scores
 
 # protocol used for first experiment on dataset
@@ -207,4 +208,4 @@ def test_multiple_batch_sizes_and_neurons(experiment_func):
         pyplot.show()
     return experiment_results, overall_time_results
 
-results, time = test_multiple_batch_sizes_and_neurons(experiment)
+results, run_time = test_multiple_batch_sizes_and_neurons(experiment)
