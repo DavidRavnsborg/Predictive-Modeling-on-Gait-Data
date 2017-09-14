@@ -12,10 +12,8 @@ from math import sqrt
 from matplotlib import pyplot
 from pandas import concat
 from pandas import DataFrame
-from pandas import datetime
 from pandas import read_csv
 from pandas import Series
-from pandas import to_timedelta
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 from time import time
