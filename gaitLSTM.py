@@ -4,7 +4,6 @@ Created on Sun Aug 27 13:46:15 2017
 
 @author: david
 """
-
 # load and plot dataset
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -128,7 +127,7 @@ def experiment(repeats, series, epochs, batch_size, neurons):
     return error_scores
 
 # protocol used for first experiment on dataset
-def test_multiple_resampling_rates_and_epochs(experiment_func):
+def test_multiple_resampling_rates_and_epochs(experiment_func=experiment):
     # Experiment conditions
     resampling_rates = [5, 10, 20, 30, 40]
     resampling_rates = resampling_rates[::-1] # will start with the higher/faster resampling rates, for faster feedback while developing
@@ -171,7 +170,7 @@ def test_multiple_resampling_rates_and_epochs(experiment_func):
     return experiment_results, overall_time_results
 
 # protocol used for second experiment on dataset
-def test_multiple_batch_sizes_and_neurons(experiment_func):
+def test_multiple_batch_sizes_and_neurons(experiment_func=experiment):
     # Experiment conditions
     resampling_rate = 5
     epoch_size = 250
@@ -207,5 +206,3 @@ def test_multiple_batch_sizes_and_neurons(experiment_func):
         pyplot.savefig('boxplot_batch_size_neurons{}.png'.format(n))
         pyplot.show()
     return experiment_results, overall_time_results
-
-results, run_time = test_multiple_batch_sizes_and_neurons(experiment)
