@@ -10,6 +10,7 @@ from keras.layers import LSTM
 from keras.models import Sequential
 from math import sqrt
 from matplotlib import pyplot
+from numpy import array
 from pandas import concat
 from pandas import DataFrame
 from pandas import read_csv
@@ -17,7 +18,6 @@ from pandas import Series
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 from time import time
-import numpy
 
 # create a differenced series
 def difference(dataset, interval=1):
@@ -56,9 +56,9 @@ def scale(train, test):
 # inverse scaling for a forecasted value
 def invert_scale(scaler, X, yhat):
 	new_row = [x for x in X] + [yhat]
-	array = numpy.array(new_row)
-	array = array.reshape(1, len(array))
-	inverted = scaler.inverse_transform(array)
+	uninverted = array(new_row)
+	uninverted = uninverted.reshape(1, len(uninverted))
+	inverted = scaler.inverse_transform(uninverted)
 	return inverted[0, -1]
 
 # fit an LSTM network to training data
